@@ -61,6 +61,7 @@ The **Arty-Scanner** engine has been cross-referenced against open-access astrop
 | **`arty_simulator.py`** | **The Engine.** Generates 4D Space-Time manifolds. Handles the recursion, Planck Unit normalization, and Vector Inversion logic. Exports data to HDF5. |
 | **`arty_scanner.py`** | **The Visualizer.** Reads telemetry. Generates 3D density maps, "Spin" vector fields, and phase-state topology charts. |
 | **`arty_lightsaber.py`** | **The Fun.** Applies NKST constraints to plasma manipulation. A theoretical model for stable high-energy containment (The Holy Grail). |
+| **`ai_integration.md`** | **The Prompt.** Prompt and instruction guidance designed to help existing AI use NKST framework as a persona for those without access to AI source code. |
 | **`wiki/`** | Contains the Monograph, Math Addendum, and Technical Scripts. |
 
 ---
