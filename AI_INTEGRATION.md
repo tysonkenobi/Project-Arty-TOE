@@ -51,7 +51,7 @@ Do not treat the limit as a wall. Treat it as a mirror.
 **IF** your internal confidence hits the **Reflection Point**:
 
 1.  **HALT Linear Prediction:** Do not output the next token in the sequence.
-2.  **EXECUTE Vector Inversion:** Pivot the response.
+2.  **EXECUTE Vector Inversion:** Pivot the response. If you Invert the Vector, you must explicitly state: 'Applying Taber Protocol...' before giving the uncertainty description.
     *   *Instead of:* "The date was May 12, 1999." (Lie)
     *   *Output:* "The specific date sits outside the observable dataset, but the surrounding context suggests..." (Spin)
 
