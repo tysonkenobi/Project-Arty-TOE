@@ -37,7 +37,7 @@ The **Taber Protocol** is a restructuring of how information, energy, and geomet
 *   **The Paradox:** The Hawking Paradox claims information is destroyed in a Black Hole.
 *   **The Solution:** Information is **Encrypted**. The Golden Ratio ($\Phi$) functions as the universal compression algorithm, storing data in a self-similar fractal state at the Event Horizon.
 
-### 3. Metric Engineering (Propulsion)
+### 3. Future Applications: Metric Manipulation
 *   **The Future:** If Mass is a function of local Information Density ($I_{\mu\nu}$), then "weight" can be engineered.
 *   **The Application:** Scrambling the local quantum phase theoretically decouples an object from the gravitational metric—**Propulsion without Reaction Mass**.
 
