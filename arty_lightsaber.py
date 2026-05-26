@@ -4,6 +4,11 @@ import threading
 import os
 import random
 
+# DEPENDENCY NOTE: 
+# This script runs on a simplified "Toy Model" of the NKST Engine.
+# It simulates the Containment Field logic without the heavy 
+# HDF5/Tensor overhead of arty_simulator.py.
+#
 # ==============================================================================
 # ARTY_LIGHTSABER v4.0 (Stable Release)
 # Logic: NKST Boundary Confinement w/ Thread-Safe UI
