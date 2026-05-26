@@ -2,163 +2,145 @@ import time
 import sys
 import threading
 import os
+import random
 
 # ==============================================================================
-# ARTY_LIGHTSABER v2.0 (Interactive)
-# Logic: NKST Boundary Confinement with Variable Geometry
+# ARTY_LIGHTSABER v4.0 (Stable Release)
+# Logic: NKST Boundary Confinement w/ Thread-Safe UI
 # ==============================================================================
+
+# ANSI Colors
+C_GREEN = "\033[92m" # Real Mass
+C_RED = "\033[91m"   # Imaginary Spin
+C_CYAN = "\033[96m"  # The Containment Field
+C_RESET = "\033[0m"
 
 class KyberCrystal:
     def __init__(self):
         self.active = False
-        self.resonance = 1.618 
     
     def pulse(self):
-        """Emits plasma only if active"""
         if self.active:
-            return {"pos": 0.0, "vel": 1.0, "phase": 1.0 + 0j, "type": "PLASMA"}
+            # Emits Real Plasma (+1)
+            return {"pos": 0.0, "vel": 1.0, "phase": "REAL", "type": "PLASMA"}
         return None
 
 class NKST_ContainmentField:
-    def __init__(self, max_length=20):
+    def __init__(self, max_length=24):
         self.max_length = max_length
-        self.current_limit = 0 # Starts collapsed
+        self.current_limit = 0 
         self.target_limit = 0
         
     def update_field_integrity(self):
-        """Smoothly expands or contracts the Event Horizon"""
+        # The "Variable Geometry" logic
         if self.current_limit < self.target_limit:
-            self.current_limit += 1 # Extend
+            self.current_limit += 1
         elif self.current_limit > self.target_limit:
-            self.current_limit -= 1 # Retract (Collapse the wall)
+            self.current_limit -= 1
             
-    def apply_boundary_logic(self, particle):
-        """
-        THE McTWIST PROTOCOL
-        """
-        # 1. Check if particle hit the current (moving) wall
-        if particle["pos"] >= self.current_limit:
+    def apply_boundary_logic(self, p):
+        # -------------------------------------------------
+        # THE McTWIST PROTOCOL (Vector Inversion)
+        # -------------------------------------------------
+        if p["pos"] >= self.current_limit:
+            # 1. REFLECTION: Velocity Inverts
+            p["vel"] = -1.0 
             
-            # 2. Trigger Vector Inversion (Reflection)
-            particle["vel"] = -1.0 # Bounce back
+            # 2. TRANSFORMATION: Real Mass -> Imaginary Spin
+            p["phase"] = "IMAGINARY" 
+            p["type"] = "RECIRC"
             
-            # 3. Convert to Imaginary Phase (Containment)
-            # Real Energy becomes Spin
-            particle["phase"] = complex(0, -1.0)
-            particle["type"] = "RECIRC"
-            
-            # 4. Clamp to the moving wall
-            particle["pos"] = self.current_limit - 0.1
+            # 3. CLAMP: Lock to the Event Horizon
+            p["pos"] = self.current_limit - 0.1
             return True
             
-        # 5. Hilt Re-absorption (Energy Conservation)
-        elif particle["pos"] <= 0 and particle["type"] == "RECIRC":
-            particle["type"] = "ABSORBED" # Marked for deletion
+        # 4. RE-ABSORPTION: Energy returns to Hilt
+        elif p["pos"] <= 0 and p["type"] == "RECIRC":
+            p["type"] = "ABSORBED"
             return False
-            
         return False
 
 class Lightsaber:
     def __init__(self):
         self.crystal = KyberCrystal()
-        self.field = NKST_ContainmentField(max_length=25)
+        self.field = NKST_ContainmentField()
         self.particles = []
         self.running = True
-        self.state_label = "OFFLINE"
+        self.state_label = "STANDBY"
 
     def toggle_power(self):
         if self.crystal.active:
-            # RETRACT SEQUENCE
             self.crystal.active = False
-            self.field.target_limit = 0 # Collapse the field
-            self.state_label = "RETRACTING..."
+            self.field.target_limit = 0
+            self.state_label = "RETRACTING"
         else:
-            # IGNITION SEQUENCE
             self.crystal.active = True
-            self.field.target_limit = self.field.max_length # Extend the field
-            self.state_label = "IGNITING..."
+            self.field.target_limit = self.field.max_length
+            self.state_label = "STABLE"
 
     def physics_tick(self):
-        # 1. Move the Wall (Extend/Retract)
         self.field.update_field_integrity()
-        
-        # 2. Emit New Energy (If Active)
         new_p = self.crystal.pulse()
-        if new_p:
-            self.particles.append(new_p)
+        if new_p: self.particles.append(new_p)
             
-        # 3. Update All Particles
         active_particles = []
         for p in self.particles:
-            # Move
             p["pos"] += p["vel"]
-            
-            # Apply NKST Logic
             self.field.apply_boundary_logic(p)
-            
-            # Keep only if not absorbed
             if p["type"] != "ABSORBED":
                 active_particles.append(p)
-                
         self.particles = active_particles
 
     def render(self):
-        # Clear Line (ANSI Escape)
-        sys.stdout.write("\033[K") 
-        
-        # Buffer
-        buffer = [" "] * (self.field.max_length + 10)
+        sys.stdout.write("\033[K") # Clear Line
         
         # Draw Hilt
-        buffer[0] = "H"
-        buffer[1] = "]"
+        hilt = f"{C_CYAN}[||||]{C_RESET}"
         
-        # Draw Particles
-        energy_sum = 0
+        # Draw Blade Buffer
+        buffer = [" "] * (self.field.max_length + 5)
+        
+        # Populate Blade
+        energy_density = 0
         for p in self.particles:
-            idx = int(p["pos"]) + 2
-            if 2 <= idx < len(buffer):
-                if p["type"] == "PLASMA":
-                    buffer[idx] = "=" # Outbound (Real)
-                else:
-                    buffer[idx] = "~" # Inbound (Imaginary/Spin)
-                energy_sum += 1
+            idx = int(p["pos"])
+            if 0 <= idx < len(buffer):
+                # Green = Outbound, Red = Inbound
+                char = "=" if p["phase"] == "REAL" else "~"
+                color = C_GREEN if p["phase"] == "REAL" else C_RED
+                buffer[idx] = f"{color}{char}{C_RESET}"
+                energy_density += 1
 
-        # Draw The Tip (The Event Horizon)
-        # Only visible if extended
+        # Draw Tip (Event Horizon)
         if self.field.current_limit > 0:
-            tip_idx = self.field.current_limit + 2
+            tip_idx = self.field.current_limit
             if tip_idx < len(buffer):
-                buffer[tip_idx] = "|" # The Hard Deck
+                buffer[tip_idx] = f"{C_CYAN}|{C_RESET}"
 
-        visual = "".join(buffer)
+        blade_visual = "".join(buffer)
         
-        # Status Line
-        status = f"\r{visual}  [Status: {self.state_label}] [L: {self.field.current_limit}]"
-        sys.stdout.write(status)
-        sys.stdout.flush()
+        # Dynamic Hum Text
+        hum = "zZz" if energy_density > 5 else "..."
+        
+        # Final Composition
+        print(f"\r{hilt}{blade_visual}  [{self.state_label}] {hum}", end="", flush=True)
 
 def input_listener(saber):
-    """Runs in background thread to catch keystrokes"""
-    print("------------------------------------------------")
-    print(" COMMANDS: [ENTER] = Toggle Power  |  [q] = Quit")
-    print("------------------------------------------------")
-    while saber.running:
-        cmd = input()
-        if cmd.lower() == 'q':
-            saber.running = False
-            print("\n Shutting down physics engine...")
-        else:
-            saber.toggle_power()
-
-# ==============================================================================
-# MAIN LOOP
-# ==============================================================================
-if __name__ == "__main__":
-    # Clear screen
-    os.system('cls' if os.name == 'nt' else 'clear')
+    """Background thread waiting for ENTER key"""
+    print(f"{C_CYAN}--- NKST PROTOCOL v4.0 ---{C_RESET}")
+    print("Controls: [ENTER] to Toggle Blade  |  [Ctrl+C] to Quit")
     
-    # Init
+    while saber.running:
+        try:
+            # Blocking call - waits for ENTER
+            input() 
+            if saber.running:
+                saber.toggle_power()
+        except EOFError:
+            break
+
+if __name__ == "__main__":
+    os.system('cls' if os.name == 'nt' else 'clear')
     saber = Lightsaber()
     
     # Start Input Thread
@@ -166,17 +148,13 @@ if __name__ == "__main__":
     t.daemon = True
     t.start()
     
-    # Start Physics Loop (Main Thread)
+    # Main Physics Loop
     try:
         while saber.running:
             saber.physics_tick()
             saber.render()
             time.sleep(0.04) # 25 FPS
-            
-            # Check idle state
-            if not saber.crystal.active and len(saber.particles) == 0:
-                 saber.state_label = "STANDBY"
-                 
     except KeyboardInterrupt:
-        print("\nForce Quit.")
-
+        saber.running = False
+        print(f"\n\n{C_CYAN}[SYSTEM] May the force be with you, always.{C_RESET}")
+        sys.exit()
