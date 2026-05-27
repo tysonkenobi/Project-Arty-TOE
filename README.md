@@ -51,7 +51,7 @@ The **NKST Framework** is a novel simulation of how information, energy, and geo
 ## 📐 Validation Metrics
 **Phase 1: Historical Data Alignment**
 
-The **Arty-Scanner** engine looks for novel occurences of 1/phi^3 in available public data, revealing them be found as expected.
+The **Arty-Scanner** engine looks for novel occurences of 1/phi^3 in available public data.
 
 =====================================================================================
  REAL DUAL-STREAM PROFILE: LIGO EXPERIMENTAL (GW150914) OBSERVATION REPORT
