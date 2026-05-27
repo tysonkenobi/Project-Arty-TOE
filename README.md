@@ -29,12 +29,11 @@ In addition, the golden ratio is used to compress information geometrically as o
 *   **The Grid:** Utilizes the irrational spacing of \(\Phi \) to separate vectors perfectly, allowing infinite data layers to occupy the same space with zero overlap or destructive interference.
 
 ### Occam's Razor and Survivorship Bias ($$\text{Observed Ratio} = \frac{A_n}{A_{n-1}}$$)
-In addition, the golden ratio is used to compress information geometrically as oppossed to current linear quadratic approaches
-*   **The Scale:** Acts as a geometric scaling factor to compress data into infinitely nested, self-similar dimensions rather than expanding outward across flat grids.
-*   **The Grid:** Utilizes the irrational spacing of \(\Phi \) to separate vectors perfectly, allowing infinite data layers to occupy the same space with zero overlap or destructive interference.
-*   
----
+A disciplined Occam's Razor approach where bias is ruthlessly hunted
+*   **The Final Cut:** No heavy statistical packages, uses the simplest possible metric to monitor the waveform's envelope decay.
+*   **The Survivor:** Evaluates local point-to-point fractions on a single line of math, extracting the structural layout of the wave with zero processing bloat or external software dependencies.
 
+*   
 ## ⚡ Strategic Areas of Possible Impact
 The **NKST Framework** is a novel simulation of how information, energy, and geometry interact at scale.
 
@@ -52,15 +51,24 @@ The **NKST Framework** is a novel simulation of how information, energy, and geo
 ## 📐 Validation Metrics
 **Phase 1: Historical Data Alignment**
 
-The **Arty-Scanner** engine has been cross-referenced against open-access astrophysical datasets, demonstrating a geometric lock on observable reality without "free parameter" tuning.
+The **Arty-Scanner** engine looks for novel occurences of 1/phi^3 in available public data, revealing them be found as expected.
 
-| Target Dataset | Taber Prediction | Historical Observation | Status |
-| :--- | :--- | :--- | :--- |
-| **M87* Event Horizon** (Ring Width) | **0.236** ($1/\phi^3$) | **≤ 0.25** (EHT Paper VII) | **MATCH (<1%)** |
-| **GW150914** (Black Hole Spin) | **0.618** ($1/\phi$) | **0.67 ± 0.05** (LIGO) | **WITHIN ERROR** |
-| **Singularity Behavior** | **Inversion (Spin)** | **Unknown** | **PREDICTION** |
-
-*Note: The Taber Prediction for GW150914 (0.618) sits precisely at the lower bound of the LIGO uncertainty range.*
+=====================================================================================
+ REAL DUAL-STREAM PROFILE: LIGO EXPERIMENTAL (GW150914) OBSERVATION REPORT
+=====================================================================================
+[Summary Matrix] Evaluated Steps: 36
+  • Direct Cubic Phi Drops (23.6%): 0
+  • Inverse Complement Mirrors (76.4%): 1
+--> Combined Geometric Resonance Footprint: 2.8%
+=====================================================================================
+=====================================================================================
+ REAL DUAL-STREAM PROFILE: EHT CORE OBSERVATIONAL (M87*) OBSERVATION REPORT
+=====================================================================================
+-------------------------------------------------------------------------------------
+[Summary Matrix] Evaluated Steps: 44
+  • Direct Cubic Phi Drops (23.6%): 0
+  • Inverse Complement Mirrors (76.4%): 3
+--> Combined Geometric Resonance Footprint: 6.8%
 
 ---
 
@@ -69,9 +77,10 @@ The **Arty-Scanner** engine has been cross-referenced against open-access astrop
 | File | Function |
 |---|---|
 | **`arty_simulator.py`** | **The Engine.** Generates 4D Space-Time manifolds. Handles the recursion, Planck Unit normalization, and Vector Inversion logic. Exports data to HDF5. |
-| **`arty_scanner.py`** | **The Visualizer.** Reads telemetry. Generates 3D density maps, "Spin" vector fields, and phase-state topology charts. |
+| **`arty_scanner.py`** | **The Visualizer.** Reviews LIGO/EHT public data for novel occurence of 1/phi^3 decay. |
 | **`arty_lightsaber.py`** | **The Fun.** Applies NKST constraints to plasma manipulation. A theoretical model for stable high-energy containment (The Holy Grail). |
 | **`ai_integration.md`** | **The Prompt.** Prompt and instruction guidance designed to help existing AI use NKST framework as a persona for those without access to AI source code. |
+| **`arty_mitigator.py`** | **The Map.** Designed to map NKST Framework to AI nueral vectors to help hallucination mitigation |
 | **`wiki/`** | Contains the Monograph, Math Addendum, and Technical Scripts. |
 
 ---
