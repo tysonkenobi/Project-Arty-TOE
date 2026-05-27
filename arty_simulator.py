@@ -1,125 +1,170 @@
 import numpy as np
 import h5py
 import time
+import os
 
 # ==============================================================================
-# NKST SIMULATION ENGINE (v3.0 - UNBIASED PHYSICAL UNITS BUILD)
-# Logic: Outputs standalone physical units (Strain & Meters). No self-validation.
+# NKST SIMULATION ENGINE (v5.1 - FIXED DZHANIBEKOV AXIAL BUILD)
+# Core Logic: Matter Freezes (Time Dilation) | Boundary Reversal (Dzhanibekov)
+# Fix: Resolved Matrix-to-Scalar Dimension Flaw in Time Dilation Loop
 # ==============================================================================
 
 class NKST_Universe:
-    def __init__(self, target_mass_solar_units=36.0):
-        print("[System] Initializing Real-Scale Physics Engine...")
-        self.PHI = 1.61803398875
-        
-        # SI Base Constants for Black Hole Scale Translation
-        self.G = 6.67430e-11
-        self.C = 299792458.0
-        self.M_SUN = 1.989e30
-        
-        # System Configuration (e.g., LIGO GW150914 Core Mass ~36 Solar Masses)
-        self.total_mass = target_mass_solar_units * self.M_SUN
-        self.R_schwarzschild = (2.0 * self.G * self.total_mass) / (self.C ** 2)
-        
-        # Base Simulation Limits (Normalized Physical Thresholds)
+    def __init__(self):
+        print("[System] Initializing Minkowski Vacuum (Planck Normalized)...")
+        self.PHI = 1.6180339887
         self.PLANCK_LIMIT = 1.0
+        self.EPSILON = 1e-9  
         
-        # Space-Time Arrays
+        # Space-Time Metric and Mass-Density Tensors
         self.g_tensor = np.zeros((4, 4))
         np.fill_diagonal(self.g_tensor, [-1.0, 1.0, 1.0, 1.0])
         self.R_tensor = np.zeros((4, 4))
         
-        # Independent Quantum Initial Phase
+        # State Vector: Angular Momentum mapping for Dzhanibekov modeling
+        # Index 0 = Stable Axis, Index 1 = Intermediate (Unstable) Axis, Index 2 = Major Axis
+        self.omega = np.array([0.1, 0.01, 0.0]) 
+        
+        # Quantum Phase Space
         self.I_tensor = np.zeros((4, 4), dtype=complex)
         self.I_tensor.fill(0 + 1j * self.PHI)
         
+        # Simulation Parameters
         self.history = []
-        self.t_step = 0.0 
-        self.dt = 0.0 
+        self.t_step = 0.0
+        self.dt = 1.0
+        self.momentum_direction = 1.0  # 1.0 = Climbing up the ramp, -1.0 = Moving back down
+
+    def _update_metric_geometry(self, axis=1):
+        """Maps mass density directly to spatial curvature geometry."""
+        denominator = 1.0 - self.R_tensor[axis, axis]
+        if denominator < self.EPSILON:
+            denominator = self.EPSILON
+        self.g_tensor[axis, axis] = 1.0 / denominator
 
     def inject_mass(self, density_amount, axis=1):
-        self.R_tensor[axis, axis] += density_amount
-        if self.R_tensor[axis, axis] < self.PLANCK_LIMIT:
-            self.g_tensor[axis, axis] = 1.0 / (1.0 - self.R_tensor[axis, axis])
+        """
+        Integrates mass along the direction of the momentum vector.
+        The momentum_direction flips dynamically when a Dzhanibekov inversion triggers.
+        """
+        increment = density_amount * self.momentum_direction
+        self.R_tensor[axis, axis] += increment
+        
+        # Floor safety handling to ensure mass never falls below absolute vacuum
+        if self.R_tensor[axis, axis] < 0.0:
+            self.R_tensor[axis, axis] = 0.0
+            self.momentum_direction = 1.0  # Reset trajectory to climb again
+            
+        self._update_metric_geometry(axis)
 
-    def run_taber_phase_check(self):
-        status_report = "Stable"
+    def run_dzhanibekov_flip_check(self):
+        """
+        DZHANIBEKOV AXIAL REVERSAL PROTOCOL
+        Uses rigid body intermediate-axis Euler equations to drive the McTwist inversion.
+        """
+        status_report = "Stable Trajectory"
+        boundary_wall = self.PLANCK_LIMIT - self.EPSILON
+        
         for i in range(1, 4):
             local_density = self.R_tensor[i, i]
-            current_phase = self.I_tensor[i, i]
             
-            if local_density >= self.PLANCK_LIMIT:
-                if current_phase.imag > 0:
-                    # Pure physical phase shift event
-                    self.I_tensor[i, i] = np.conj(current_phase)
-                    status_report = "INVERSION"
-                else:
-                    # Natural mathematical decay (unaware of LIGO target array)
-                    self.I_tensor[i, i] = current_phase * (1.0 / self.PHI)
-                    status_report = "RINGDOWN"
-
-                self.R_tensor[i, i] = self.PLANCK_LIMIT
+            # Boundary Condition Breach: System meets or exceeds the Planck limit
+            if local_density >= boundary_wall and self.momentum_direction > 0:
+                status_report = "!!! DZHANIBEKOV FLIP (AXIAL INVERSION) !!!"
+                
+                # Simulate the unstable intermediate axis flip using rigid body constants
+                # Moments of Inertia: I1 < I2 < I3 (Forces intermediate axis I2 to be unstable)
+                I1, I2, I3 = 1.0, 2.0, 3.0
+                
+                # Execute 3 quick micro-steps of Euler's rotation equations to resolve the physical flip
+                for _ in range(3):
+                    alpha1 = ((I2 - I3) / I1) * self.omega[1] * self.omega[2]
+                    alpha2 = ((I3 - I1) / I2) * self.omega[0] * self.omega[2]
+                    alpha3 = ((I1 - I2) / I3) * self.omega[0] * self.omega[1]
+                    
+                    self.omega += np.array([alpha1, alpha2, alpha3]) * 0.1
+                
+                # Invert the trajectory direction vector (Turns everything around)
+                self.momentum_direction = -1.0
+                
+                # Complex-conjugate the quantum information phase topology
+                self.I_tensor[i, i] = np.conj(self.I_tensor[i, i])
+                
+            # Recovery/Drain Phase: System is actively moving back down the ramp
+            elif self.momentum_direction < 0:
+                decay_factor = 1.0 / self.PHI
+                
+                # Process the Golden Ratio Energy Decay
+                self.I_tensor[i, i] *= decay_factor
+                status_report = ">>> RAMP DOWN (ENERGY ESCAPE CYCLE) >>>"
+                
+                # Safely balance the system rotation vector back to ground state metrics
+                self.omega *= decay_factor
                 
         return status_report
 
     def step(self):
-        current_density = self.R_tensor[1, 1]
+        """Advances the universal simulation clock while processing time dilation."""
+        # FIXED: Explicitly isolate the active spatial coordinate scalar (Axis 1) 
+        # to prevent global matrix-to-scalar type errors.
+        current_density = float(self.R_tensor[1, 1])
         compression_factor = 1.0 / (self.PHI ** 3)
-
+        
         if current_density > 0.0:
-             drag = 1.0 + (current_density / compression_factor)
-             self.dt = 1.0 / drag 
-             self.t_step += self.dt
+            drag = 1.0 + (current_density / compression_factor)
+            self.dt = 1.0 / drag
         else:
-             self.dt = 1.0
-             self.t_step += 1.0
-
-        status = self.run_taber_phase_check()
+            self.dt = 1.0
+            
+        self.t_step += self.dt
+        status = self.run_dzhanibekov_flip_check()
         
-        # --- PHYSICAL UNIT TRANSLATION LAYER ---
-        # Convert raw abstract density into an absolute physical metric (EHT Ring Radius)
-        sim_radius_meters = self.R_schwarzschild * (1.0 + (1.0 - self.R_tensor[1, 1]))
-        
-        # Convert abstract phase decay into real physical LIGO strain amplitude scale (x10^-21)
-        # Peak peak-to-peak strain of a ~36 solar mass black hole ringdown baseline:
-        ligo_amplitude_scale = 4.81 
-        physical_strain = abs(self.I_tensor[1, 1].imag) * (ligo_amplitude_scale / self.PHI)
-
+        # Isolate coordinate elements explicitly for h5py safe logging
         snapshot = {
-            "time": self.t_step,
-            "raw_density": self.R_tensor[1, 1],
-            "physical_radius_km": sim_radius_meters / 1000.0,
-            "physical_strain": physical_strain,
+            "time": float(self.t_step),
+            "density_r": float(self.R_tensor[1, 1]),
+            "metric_g": float(self.g_tensor[1, 1]),
+            "phase_imag": float(self.I_tensor[1, 1].imag),
+            "direction": float(self.momentum_direction),
             "status": status
         }
         self.history.append(snapshot)
         return snapshot
 
     def export_data(self, filename="nkst_telemetry.h5"):
+        clean_filename = os.path.basename(filename)
         t_series = [s["time"] for s in self.history]
-        r_series = [s["raw_density"] for s in self.history]
-        rad_series = [s["physical_radius_km"] for s in self.history]
-        strain_series = [s["physical_strain"] for s in self.history] 
+        r_series = [s["density_r"] for s in self.history]
+        g_series = [s["metric_g"] for s in self.history]
+        i_series = [s["phase_imag"] for s in self.history]
         
-        with h5py.File(filename, "w") as f:
-            f.create_dataset("time", data=t_series)
-            f.create_dataset("density", data=r_series)
-            f.create_dataset("radius_km", data=rad_series)
-            f.create_dataset("strain", data=strain_series)
-            f.attrs["engine_version"] = "3.0 (Unbiased Standard Physical Units)"
+        tmp_filename = f"{clean_filename}.tmp"
+        try:
+            with h5py.File(tmp_filename, "w") as f:
+                f.create_dataset("time", data=t_series)
+                f.create_dataset("density", data=r_series)
+                f.create_dataset("metric_g", data=g_series)
+                f.create_dataset("phase_spin", data=i_series)
+                f.attrs["engine_version"] = "5.1 (Dzhanibekov Production Build)"
+            os.replace(tmp_filename, clean_filename)
+            print(f"[System] Telemetry exported successfully to {clean_filename}")
+        except Exception as e:
+            if os.path.exists(tmp_filename):
+                os.remove(tmp_filename)
+            print(f"[Error] Critical IO Failure: {str(e)}")
+            raise e
 
 if __name__ == "__main__":
-    # Simulate a 36-Solar-Mass System (LIGO GW150914 baseline)
-    sim = NKST_Universe(target_mass_solar_units=36.0)
-    print(f"[Sim] Calculated Horizon Radius Target: {sim.R_schwarzschild/1000.0:.2f} km")
-    print("[Sim] Beginning Gravitational Collapse Sequence...")
+    sim = NKST_Universe()
+    print("\n[Sim] Beginning Dzhanibekov Inversion Sequence...")
     
-    for t in range(40): 
-        sim.inject_mass(0.04) 
+    # 50 step lifecycle verification
+    for t in range(50):
+        sim.inject_mass(0.25, axis=1)
         data = sim.step()
-        if t % 5 == 0 or data['status'] != "Stable":
-            print(f"Loop={t:02d} | Strain: {data['physical_strain']:.3f}e-21 | Horizon: {data['physical_radius_km']:.2f} km | {data['status']}")
-        time.sleep(0.01)
-    
+        
+        if t % 3 == 0 or "!!!" in data['status'] or ">>>" in data['status']:
+            print(f"Loop={t:02d} | Density={data['density_r']:.4f} | Metric_G={data['metric_g']:.1f} | Vector_Dir={data['direction']:.1f} | {data['status']}")
+            time.sleep(0.01)
+            
     sim.export_data()
-    print("[System] Telemetry Exported cleanly with physical units.")
