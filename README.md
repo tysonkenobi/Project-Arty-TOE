@@ -89,22 +89,16 @@ The **Arty-Scanner** engine looks for novel occurences of 1/phi^3 in available p
 
 ### Prerequisites
 *   Python 3.9+
-*   `numpy`, `h5py`, `matplotlib`
+*   numpy, h5py, matplotlib, ospy, timepy
 
-### 1. Run a Simulation
-Execute the engine to generate a space-time manifold with the "McTwist" logic active.
-```bash
-python arty_simulator.py --mass "black_hole" --steps 1000
+### 1. Run a Simulation 
+Execute the engine to generate a dynamic context manifold with active singularity avoidance.
+python3 arty_simulator.py
 
-### 2. Visualize the data
-Run the scanner to inspect the event horizon geometry and verify the conservation of spin.
+### 2. Telemetry Output
+The engine automatically captures runtime metrics and exports them safely to an HDF5 database for external analysis:
+* File Location: `./exports/nkst_ai_telemetry.h5`
 
-python arty_scanner.py --input simulation_telemetry.h5 --mode "3d_density"
-
-
-🛡️ Crowd-Proof Safety Rails
-To prevent runtime crashes and physical paradoxes, the engine enforces three low-level constraints:Mass-Conservation Checksum: A background thread monitors global mass. If rounding errors occur, it auto-balances the ledger.Lorentz Velocity Clamp: If a vector calculates \(>c\), the engine hard-clips it to 1.0.Vector Inversion Guard: The system explicitly forbids static singularities. If density > Planck, the Arrow Operator forces a polarity shift (\(Spin\)).
+🛡 Crowd-Proof Safety Rails To prevent runtime crashes and physical paradoxes, the engine enforces three low-level constraints:Mass-Conservation Checksum: A background thread monitors global mass. If rounding errors occur, it auto-balances the ledger.Lorentz Velocity Clamp: If a vector calculates \(>c\), the engine hard-clips it to 1.0.Vector Inversion Guard: The system explicitly forbids static singularities. If density > Planck, the Arrow Operator forces a polarity shift (\(Spin\)). 
 
 🤝 CollaborationThis framework is actively seeking computational physics developers to expand the script into full parallel supercomputing nodes.License: MITVersion: 2.1 (Unified Vector Inversion Build)
-
-
