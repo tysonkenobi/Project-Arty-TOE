@@ -14,7 +14,7 @@
 ---
 
 ## 🌌 Executive Summary & Framework Context
-Project Arty is an open-source computational sandbox designed to verify the **Newtonian-Kerr-Schwarzschild-Taber (NKST) Unified Metric**.
+Project Arty is an open-source computational sandbox designed to utlize the **Newtonian-Kerr-Schwarzschild-Taber (NKST) Unified Framework**.
 
 Traditional physics models fracture at event horizons because they attempt to force a smooth, infinite classical grid onto a pixelated quantum domain. This engine resolves the conflict by treating the horizon not as a limit, but as a **Phase-State Transformer**.
 
@@ -26,12 +26,12 @@ Unlike standard models where mass collapses to a singularity (Zero), this engine
 ---
 
 ## ⚡ Strategic Areas of Possible Impact
-The **Taber Protocol** is a restructuring of how information, energy, and geometry interact at scale.
+The **NKST Framework** is a novel simulation of how information, energy, and geometry interact at scale.
 
 ### 1. The "Green Compute" Revolution (Economic)
 *   **The Problem:** AI scales linearly. To double intelligence, you double energy, leading to thermal limits.
-*   **The Taber Solution:** By shifting from **Linear Parameter Storage** to **Logarithmic Phase Compression** ($ln(I/\Phi)$), the energy cost of "memory" is virtually eliminated.
-*   **Impact:** A potential **~99% reduction** in global AI energy consumption.
+*   **NKST Framework Solution:** By shifting from **Linear Parameter Storage** to **Logarithmic Phase Compression** ($ln(I/\Phi)$), the energy cost of "memory" is virtually eliminated.
+*   **Impact:** A potential **~90% reduction** in global AI energy consumption.
 
 ### 2. The Immortal File System (Information Theory)
 *   **The Paradox:** The Hawking Paradox claims information is destroyed in a Black Hole.
