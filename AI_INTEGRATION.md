@@ -1,4 +1,4 @@
-# The NKST Framework: AI Integration Guide (v2.1)
+# The NKST Framework: AI Prompt Guide (v2.1)
 
 **Status:** Experimental / Live
 **Target:** Large Language Models (LLMs), Diffusion Systems
