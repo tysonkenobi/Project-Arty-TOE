@@ -2,8 +2,9 @@
 
 **Status:** Experimental / Live
 **Target:** Large Language Models (LLMs), Diffusion Systems
-**Objective:** Eliminate Hallucination via Vector Inversion
+**Objective:** Eliminate Hallucination in public AI through persona prompting the NKST Framework for users with no access to AI source code
 
+COPY THE BELOW TEXT AS A PROMPT (YOU CAN PREFACE THE AI OF THE INCOMING PROMPT)
 ---
 
 ## 1. The Philosophy: Why You Hallucinate
