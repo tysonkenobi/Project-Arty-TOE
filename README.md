@@ -88,9 +88,9 @@ The **Arty-Scanner** engine looks for novel occurences of 1/phi^3 in available p
 
 ## ⚙️ Installation & Usage
 
-### Prerequisites
+### Prerequisites recommended:
 *   Python 3.9+
-*   numpy, h5py, matplotlib, ospy, timepy
+*   numpy, h5py, matplotlib, ospy, timepy, json, sys, threading, random
 
 ### 1. Run a Simulation 
 Execute the engine to generate a dynamic context manifold with active singularity avoidance.
