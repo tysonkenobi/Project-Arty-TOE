@@ -12,26 +12,35 @@
 > **g_mu_nu * ln( I_mu_nu / Phi_mu_nu ) = - (G * h / c^3) * R_mu_nu**
 
 ---
-
 ## 🌌 Executive Summary & Framework Context
-Project Arty is an open-source computational sandbox designed to utlize the **Newtonian-Kerr-Schwarzschild-Taber (NKST) Unified Framework**.
 
-Traditional physics models fracture at event horizons because they attempt to force a smooth, infinite classical grid onto a pixelated quantum domain. This engine resolves the conflict by treating the horizon not as a limit, but as a **Phase-State Transformer**.
+Project Arty is an open-source computational sandbox designed to utilize the **Newtonian-Kerr-Schwarzschild-Taber (NKST) Unified Framework**. 
 
-### The "Vector Inversion" Protocol ($i \to -i$)
-Unlike standard models where mass collapses to a singularity (Zero), this engine demonstrates the **Conservation of Spin**.
-*   **The Arrow:** As gravitational density hits the Planck Limit ($h$), the linear vector ($i$) is **Reflected** into angular momentum ($-i$).
-*   **The Result:** Information is never deleted; it is encrypted into complex phase amplitudes. "Infinite Fall" is converted into "Infinite Spin."
+Traditional physics models experience structural breakdown at event horizons because they attempt to force a smooth, infinite classical continuum onto a discrete quantum domain. This engine resolves the execution conflict by treating the horizon boundary not as a terminal limit, but as a deterministic **Phase-State Transformer**.
 
-### The Golden Harddrive (1/phi^3)
-In addition, the golden ratio is used to compress information geometrically as oppossed to current linear quadratic approaches
-*   **The Scale:** Acts as a geometric scaling factor to compress data into infinitely nested, self-similar dimensions rather than expanding outward across flat grids.
-*   **The Grid:** Utilizes the irrational spacing of \(\Phi \) to separate vectors perfectly, allowing infinite data layers to occupy the same space with zero overlap or destructive interference.
+### 1. The Vector Inversion Protocol ($i \to -i$)
+Unlike standard collapse models where mass-energy terminates at a gravitational singularity ($0$), this engine enforces the absolute **Conservation of Spin**:
+* **The McTwist Protocol:** As localized stress density reaches the normalized threshold boundary, the linear phase vector ($i$) undergoes a discrete complex conjugation reflection ($-i$).
+* **Information Retention:** State information is preserved and encrypted directly into complex phase amplitudes rather than being mathematically deleted.
+* **Kinematic Shift:** The framework converts a divergent "Infinite Fall" trajectory into a stable, bounded "Infinite Spin" configuration.
 
-### Occam's Razor and Survivorship Bias ($$\text{Observed Ratio} = \frac{A_n}{A_{n-1}}$$)
-A disciplined Occam's Razor approach where bias is ruthlessly hunted
-*   **The Final Cut:** No heavy statistical packages, uses the simplest possible metric to monitor the waveform's envelope decay.
-*   **The Survivor:** Evaluates local point-to-point fractions on a single line of math, extracting the structural layout of the wave with zero processing bloat or external software dependencies.
+### 2. The Golden Harddrive ($\frac{1}{\phi^3}$)
+The model implements geometric data compression driven by the mathematical properties of the Golden Ratio ($\phi \approx 1.618$):
+* **Geometric Scaling:** Functions as a non-linear scaling factor to compress active state data into infinitely nested, self-similar coordinate layers.
+* **Non-Periodic Spacing:** Utilizes the irrational distribution profiles of $\phi$ to isolate system vectors.
+* **Zero-Overlap Packing:** Allows multiple data layers to occupy the same coordinate matrix while preventing destructive interference or numerical collisions.
+
+### 3. Occam's Razor & Survivorship Bias ($\text{Observed Ratio} = \frac{A_n}{A_{n-1}}$)
+The architecture implements a lean validation loop where structural statistical bias is systematically eliminated:
+* **Minimalist Metrics:** Bypasses heavy external statistical packages by utilizing a direct, low-overhead envelope decay tracking routine.
+* **First-Order Recurrence:** Evaluates local point-to-point sequence fractions on a single line of execution math.
+* **Zero Bloat Processing:** Extracts the underlying geometric layout of the state waveform without introducing external software dependencies.
+
+### 4. The Dzhanibekov Flop & Schatz Oloid ($P_8(x, y, z) = 0$)
+The system boundary applies specific multi-axis asymmetric rotations to establish a continuous, differentiable transition zone:
+* **The Algebraic Boundary:** Implements an exact 8th-degree implicit polynomial surface constraint ($P_8 = 0$) to smooth out chaotic metric variations.
+* **Asymmetric Torque Rotation:** Leverages intermediate axis instability (the Dzhanibekov Effect) to drive the angular velocity vector through its inversion phase.
+* **Symmetrical Stabilization:** Aligns the spatial metric updates with the complex phase inversions to land the exact trajectory flip cleanly.
 
 *   
 ## ⚡ Strategic Areas of Possible Impact
