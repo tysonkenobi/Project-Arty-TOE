@@ -6,12 +6,14 @@
 
 **Lead Architect:** Tyson N. Taber  
 **Location:** Salt Lake City, Utah, USA  
-**Status:** Open-Source Grassroots Research Asset  
+**Status:** Open-Source Grassroots Research Asset
 
-### Core Equation
-> **g_mu_nu * ln( I_mu_nu / Phi_mu_nu ) = - (G * h / c^3) * R_mu_nu**
+### Core Boundary Equation
+
+$$g_{\mu\nu} \ln\left(\frac{I_{\mu\nu}}{\Phi_{\mu\nu}}\right) = -\left(\frac{G \hbar}{c^3}\right) R_{\mu\nu}$$
 
 ---
+
 ## 🌌 Executive Summary & Framework Context
 
 Project Arty is an open-source computational sandbox designed to utilize the **Newtonian-Kerr-Schwarzschild-Taber (NKST) Unified Framework**. 
@@ -42,74 +44,78 @@ The system boundary applies specific multi-axis asymmetric rotations to establis
 * **Asymmetric Torque Rotation:** Leverages intermediate axis instability (the Dzhanibekov Effect) to drive the angular velocity vector through its inversion phase.
 * **Symmetrical Stabilization:** Aligns the spatial metric updates with the complex phase inversions to land the exact trajectory flip cleanly.
 
-*   
+---
+
 ## ⚡ Strategic Areas of Possible Impact
-The **NKST Framework** is a novel simulation of how information, energy, and geometry interact at scale.
 
-### 1. The "Green Compute" Revolution (Economic)
-*   **The Problem:** AI scales linearly. To double intelligence, you double energy, leading to thermal limits.
-*   **NKST Framework Solution:** By shifting from **Linear Parameter Storage** to **Logarithmic Phase Compression** ($ln(I/\Phi)$), the energy cost of "memory" is virtually eliminated.
-*   **Impact:** A potential **~90% reduction** in global AI energy consumption.
+### 1. High-Density Parameter Optimization
+* **The Problem:** Modern machine learning architectures require linear parameter scaling profiles, leading to extensive hardware footprints and severe thermodynamic limits during large-scale operations.
+* **The NKST Paradigm:** By transposing linear coordinate storage into logarithmic phase compression matrices ($\ln(I/\Phi)$), parameter updates are mapped down to localized geometric invariants.
+* **Target Efficiency:** Streamlines state transition footprints, enabling execution of complex boundary operations inside constrained local memory grids.
 
-### 2. The Immortal File System (Information Theory)
-*   **The Paradox:** The Hawking Paradox claims information is destroyed in a Black Hole.
-*   **The Solution:** Information is **Encrypted**. The Golden Ratio ($\Phi$) functions as the universal compression algorithm, storing data in a self-similar fractal state at the Event Horizon.
+### 2. Reversible Information Formats
+* **The Information Paradox:** Standard deterministic pipelines discard loss-state parameters during extreme mathematical transformations, creating processing blind spots.
+* **The Mechanism:** Employs the irrational limits of the Golden Ratio ($\Phi$) to function as a geometric layout tool, packing active computational transformations into non-overlapping coordinate fields that preserve state tracking across inversion phases.
 
 ---
 
 ## 📐 Validation Metrics
-**Phase 1: Historical Data Alignment**
 
-The **Arty-Scanner** engine looks for novel occurences of 1/phi^3 in available public data.
+### Historical Data Footprint Extraction
+The `arty_scanner` modules evaluate public astronomical and gravitational wave time-series data for specific geometric decay thresholds ($\phi^{-3} \approx 0.236$):
 
-=====================================================================================
- REAL DUAL-STREAM PROFILE: LIGO EXPERIMENTAL (GW150914) OBSERVATION REPORT
-=====================================================================================
-[Summary Matrix] Evaluated Steps: 36
-  • Direct Cubic Phi Drops (23.6%): 0
-  • Inverse Complement Mirrors (76.4%): 1
---> Combined Geometric Resonance Footprint: 2.8%
-=====================================================================================
-=====================================================================================
- REAL DUAL-STREAM PROFILE: EHT CORE OBSERVATIONAL (M87*) OBSERVATION REPORT
-=====================================================================================
--------------------------------------------------------------------------------------
-[Summary Matrix] Evaluated Steps: 44
-  • Direct Cubic Phi Drops (23.6%): 0
-  • Inverse Complement Mirrors (76.4%): 3
---> Combined Geometric Resonance Footprint: 6.8%
+---
+
+REAL DUAL-STREAM PROFILE: LIGO EXPERIMENTAL (GW150914) OBSERVATION REPORT
+[Summary Matrix] Evaluated Steps: 36• Direct Cubic Phi Drops (23.6%): 0• Inverse Complement Mirrors (76.4%): 1--> Combined Geometric Resonance Footprint: 2.8%
+REAL DUAL-STREAM PROFILE: EHT CORE OBSERVATIONAL (M87*) OBSERVATION REPORT[Summary Matrix] Evaluated Steps: 44• Direct Cubic Phi Drops (23.6%): 0• Inverse Complement Mirrors (76.4%): 3--> Combined Geometric Resonance Footprint: 6.8%
 
 ---
 
 ## 📂 Repository Structure
 
-| File | Function |
-|---|---|
-| **`arty_simulator.py`** | **The Engine.** Generates 4D Space-Time manifolds. Handles the recursion, Planck Unit normalization, and Vector Inversion logic. Exports data to HDF5. |
-| **`arty_scanner.py`** | **The Visualizer.** Reviews LIGO/EHT public data for novel occurence of 1/phi^3 decay. |
-| **`arty_lightsaber.py`** | **The Fun.** Applies NKST constraints to plasma manipulation. A theoretical model for stable high-energy containment (The Holy Grail). |
-| **`ai_integration.md`** | **The Prompt.** Prompt and instruction guidance designed to help existing AI use NKST framework as a persona for those without access to AI source code. |
-| **`arty_mitigator.py`** | **The Map.** Designed to map NKST Framework to AI nueral vectors to help hallucination mitigation |
-| **`arty_comparison.py`** | **The Test.** This looks at public LIGO/EHT data and compares outputs of the arty_simulator.py telemetry file to real world data |
-| **`TEST_arty_oloid_prototype.py`** | **The Update.** This is the current testing area for prototyping oloid addition to the boundary and transfer to AI vectors |
-| **`wiki/`** | Contains the Monograph, Math Addendum, and Technical Scripts. |
+
+| File / Directory | Operational Function |
+| :--- | :--- |
+| **`arty_simulator.py`** | **Core Simulation Engine.** Solves 4D spacetime transformations, processes Runge-Kutta numerical tracking integration, and writes data to structured HDF5 telemetry arrays. |
+| **`arty_scanner.py`** | **Data Parsing Pipeline.** Examines external data parameters for geometric resonance intervals and imports raw binary arrays. |
+| **`TEST_arty_oloid_prototype.py`** | **Active Prototyping Module.** Sandboxed development container for testing continuous algebraic oloid boundaries and tracking vector handshakes. |
+| **`arty_mitigator.py`** | **Vector Translation Layer.** Intermediary mapping tool designed to interface engine state variables with external processing logic. |
+| **`arty_comparison.py`** | **Telemetry Verification.** Performs direct statistical checks between simulated `arty_simulator.py` tracks and external data metrics. |
+| **`arty_lightsaber.py`** | **Plasma Modeling Sandbox.** Applies baseline NKST geometric boundary constraints to high-energy fluid models. |
+| **`ai_integration.md`** | **Prompt Engineering Specifications.** Documentation detailing structural configuration profiles for context-window generation. |
+| **`wiki/`** | Repository core documentation repository housing technical monographs, math addenda, and baseline scripts. |
 
 ---
 
 ## ⚙️ Installation & Usage
 
-### Prerequisites recommended:
-*   Python 3.9+
-*   numpy, h5py, matplotlib, ospy, timepy, json, sys, threading, random
+### Prerequisites
+The core execution dependencies require a standard Python 3.9+ runtime environment. No specialized proprietary math libraries are required:
+```bash
+pip install numpy h5py matplotlib
+```
+*(Standard internal modules utilized: `os`, `sys`, `json`, `threading`, `random`)*
 
-### 1. Run a Simulation 
-Execute the engine to generate a dynamic context manifold with active singularity avoidance.
+### 1. Execute a Baseline Simulation Run
+Run the main engine container from your local terminal to calculate a single bounded spacetime context pass:
+```bash
 python3 arty_simulator.py
+```
 
-### 2. Telemetry Output
-The engine automatically captures runtime metrics and exports them safely to an HDF5 database for external analysis:
-* File Location: `./exports/nkst_ai_telemetry.h5`
+### 2. Telemetry Retrieval
+The simulation records active tracking vectors automatically, writing data securely to a localized HDF5 structure to allow external parsing access:
+* **Output Path:** `./exports/nkst_ai_telemetry.h5`
 
-🛡 Crowd-Proof Safety Rails To prevent runtime crashes and physical paradoxes, the engine enforces three low-level constraints:Mass-Conservation Checksum: A background thread monitors global mass. If rounding errors occur, it auto-balances the ledger.Lorentz Velocity Clamp: If a vector calculates \(>c\), the engine hard-clips it to 1.0.Vector Inversion Guard: The system explicitly forbids static singularities. If density > Planck, the Arrow Operator forces a polarity shift (\(Spin\)). 
+### 🛡️ Low-Level Execution Constraints
+To protect execution integrity and maintain mathematical bounding limits, the engine executes three parallel checks:
+1. **Conservation Checksum:** A background thread tracks the variance of localized matrix totals, applying automated balance offsets if floating-point drift occurs.
+2. **Lorentz Velocity Clamp:** If a calculated spatial vector step exceeds bounded relativistic limits ($>c$), the engine clamps the coordinate change to $1.0$.
+3. **Vector Inversion Guard:** Prevents infinite values at the singularity horizon. When tracking density crosses the threshold barrier, the engine executes an immediate operational shift ($Spin$).
 
-🤝 CollaborationThis framework is actively seeking computational physics developers to expand the script into full parallel supercomputing nodes.License: MITVersion: 2.1 (Unified Vector Inversion Build)
+---
+
+## 🤝 Collaboration & Licensing
+* **License:** Distributed under the open-source [MIT License](https://opensource.org/licenses/MIT).
+* **Development Target:** Open for public optimization contributions, specifically regarding parallel execution optimizations across cluster nodes.
+* **Version:** 2.1 (Unified Vector Inversion Build)
