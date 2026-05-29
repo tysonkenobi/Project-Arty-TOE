@@ -82,6 +82,7 @@ The **Arty-Scanner** engine looks for novel occurences of 1/phi^3 in available p
 | **`ai_integration.md`** | **The Prompt.** Prompt and instruction guidance designed to help existing AI use NKST framework as a persona for those without access to AI source code. |
 | **`arty_mitigator.py`** | **The Map.** Designed to map NKST Framework to AI nueral vectors to help hallucination mitigation |
 | **`arty_comparison.py`** | **The Test.** This looks at public LIGO/EHT data and compares outputs of the arty_simulator.py telemetry file to real world data |
+| **`TEST_arty_oloid_prototype.py`** | **The Update.** This is the current testing area for prototyping oloid addition to the boundary and transfer to AI vectors |
 | **`wiki/`** | Contains the Monograph, Math Addendum, and Technical Scripts. |
 
 ---
