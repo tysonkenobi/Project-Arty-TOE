@@ -79,7 +79,7 @@ REAL DUAL-STREAM PROFILE: EHT CORE OBSERVATIONAL (M87*)
 | `arty_comparison.py` | Telemetry Verification. Performs direct statistical checks between simulated tracks and external data metrics. |
 | `arty_lightsaber.py` | Plasma Modeling Sandbox. Applies baseline NKST geometric boundary constraints to high-energy fluid models. |
 | `ai_integration.md` | Prompt Engineering Specifications. Documentation detailing structural configuration profiles for context-window generation. |
-| `wiki/` | Repository core housing technical monographs, math addenda, and baseline scripts. |
+| `wiki/` | Repository core housing technical whitepapers and foreward looking plans. All documents are not final and are under review. |
 
 ---
 
