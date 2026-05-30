@@ -74,7 +74,7 @@ REAL DUAL-STREAM PROFILE: EHT CORE OBSERVATIONAL (M87*)
 | :--- | :--- |
 | `arty_simulator.py` | Core Simulation Engine. Solves 4D spacetime transformations via Runge-Kutta numerical tracking integration; outputs to HDF5 arrays. |
 | `arty_scanner.py` | Data Parsing Pipeline. Examines external data parameters for geometric resonance intervals and imports raw binary arrays. |
-| `TEST_arty_oloid_prototype.py` | Sandbox container for testing continuous algebraic oloid boundaries and tracking vector handshakes. |
+| `TEST_arty_oloid_prototype.py` | Sandbox container for testing current proof of concept demonstration. |
 | `arty_mitigator.py` | Vector Translation Layer. Intermediary tool designed to interface engine state variables with external processing logic. |
 | `arty_comparison.py` | Telemetry Verification. Performs direct statistical checks between simulated tracks and external data metrics. |
 | `arty_lightsaber.py` | Plasma Modeling Sandbox. Applies baseline NKST geometric boundary constraints to high-energy fluid models. |
