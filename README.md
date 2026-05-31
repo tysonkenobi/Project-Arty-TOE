@@ -2,7 +2,7 @@
 **License:** MIT  
 **Lead Architect:** Tyson N. Taber (Salt Lake City, Utah, USA)  
 **Status:** Open-Source Grassroots Research Asset  
-**Version:** 2.1 (Unified Vector Inversion Build)  
+**Version:** v6.8 - ENERGY CONSERVING DZHANIBEKOV SIMULATOR
 
 $$g_{\mu \nu} \ln\left(\frac{I_{\mu \nu}}{\Phi_{\mu \nu}}\right) = -\left(\frac{G \hbar}{c^3}\right) R_{\mu \nu}$$
 
