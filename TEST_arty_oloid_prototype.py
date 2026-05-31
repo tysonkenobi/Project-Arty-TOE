@@ -1,13 +1,14 @@
 # ==============================================================================
-# MODULE: arty_pol_v522.py
-# VERSION: v5.2.2-AutoCalibrated
+# MODULE: arty_pol_v531_logged.py
+# VERSION: v5.3.1-Logged-Production
 # COMPLIANCE: PEP 8 / Zero-Hardcode Non-Disruptive Architecture
-# DESCRIPTION: Live simulation engine featuring dynamic parameter scaling.
+# DESCRIPTION: Unified simulation core that actively exports session telemetry.
 # ==============================================================================
 
 import math
 import sys
 import random
+import json
 from typing import Dict, Any, List
 
 class NKSTParametricEngine:
@@ -126,22 +127,19 @@ class LiveTransformerSimulator:
         }
 
     def simulate_next_token(self, current_temp: float) -> str:
-        """
-        NKST FRAMEWORK USE: Inversion loop (i -> -i) temperature feedback mapping.
-        """
         if current_temp <= 0.01:
             return random.choice(self.vocabulary["FACTUAL"])
-        
         if random.random() > 0.30:
             return random.choice(self.vocabulary["HALLUCINATION"])
         return random.choice(self.vocabulary["FACTUAL"])
 
-    def run_generation_loop(self, max_steps: int = 15):
+    def run_generation_loop(self, max_steps: int = 12, export_filename: str = "nkst_session_log.json"):
         """
         NKST FRAMEWORK USE: Continuous loop execution showing phase changes.
+        Actively dumps the resulting history log directly onto physical storage.
         """
         print("=" * 76)
-        print(f" LIVE NKST TRANSFORMER SIMULATION ENGINE RUNTIME v5.2.2 ")
+        print(f" LIVE NKST TRANSFORMER SIMULATION ENGINE RUNTIME v5.3.1 ")
         print("=" * 76)
         
         current_word = "Initialization"
@@ -149,7 +147,6 @@ class LiveTransformerSimulator:
         for step in range(max_steps):
             res = self.engine.process_token_step(step, current_word)
             
-            # Fixed display formatting to accurately show the dynamic horizon limit parameter
             print(f"Step #{res['step']:02d} | Generated: '{res['word']:<32}' | "
                   f"Load: {res['load']:.3f}/{self.engine.HORIZON_LIMIT:.2f} | "
                   f"Axis: {res['axis']:<18} | "
@@ -157,10 +154,24 @@ class LiveTransformerSimulator:
             print("-" * 76)
             
             current_word = self.simulate_next_token(res['temp'])
+            
+        # ACTIVE LOG EXPORT FUNCTION CALL
+        output_payload = {
+            "engine_version": self.engine.VERSION,
+            "configured_horizon": self.engine.HORIZON_LIMIT,
+            "session_history": self.engine.processed_tokens_history
+        }
+        
+        try:
+            with open(export_filename, "w", encoding="utf-8") as f:
+                json.dump(output_payload, f, indent=4)
+            print(f"\n[SUCCESS] Session telemetry successfully exported to: ./{export_filename}\n")
+        except IOError as e:
+            print(f"\n[ERROR] Failed to save logging telemetry file: {e}\n")
 
 if __name__ == "__main__":
-    # Calibrate horizon limit to 0.10 to ensure a state inversion triggers during testing
     calibrated_engine = NKSTParametricEngine(horizon_limit=0.10)
     simulator = LiveTransformerSimulator(calibrated_engine)
     
-    simulator.run_generation_loop(max_steps=12)
+    # Run the loop and specify the targeted local export filename
+    simulator.run_generation_loop(max_steps=12, export_filename="nkst_session_log.json")
