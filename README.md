@@ -48,24 +48,27 @@ The system boundary applies specific multi-axis asymmetric rotations to establis
 * **The Mechanism:** Employs the irrational limits of the Golden Ratio to pack active computational transformations into non-overlapping coordinate fields, preserving state tracking across inversion phases.
 
 ---
-
 ## 📐 Empirical Validation Metrics
+The `arty_scanner` modules evaluate external time-series data for specific geometric decay thresholds (\(\phi^{-3} \approx 0.236\)).
 
-The `arty_scanner` modules evaluate external time-series data for specific geometric decay thresholds ($\phi^{-3} \approx 0.236$). 
-
+```text
 REAL DUAL-STREAM PROFILE: LIGO EXPERIMENTAL (GW150914)
 ├── Evaluated Steps: 36
 ├── Direct Cubic Phi Drops (23.6%): 0
 └── Inverse Complement Mirrors (76.4%): 1
 └── COMBINED GEOMETRIC RESONANCE FOOTPRINT: 2.8%
+
 REAL DUAL-STREAM PROFILE: EHT CORE OBSERVATIONAL (M87*)
 ├── Evaluated Steps: 44
 ├── Direct Cubic Phi Drops (23.6%): 0
 └── Inverse Complement Mirrors (76.4%): 3
 └── COMBINED GEOMETRIC RESONANCE FOOTPRINT: 6.8%
+----------------------------------------------------------------------
+```
 
-The 'arty_window' module output currently shows (Be advised arty_window module still under review):
+The `arty_window` module output currently shows (Be advised arty_window module still under review):
 
+```text
 ----------------------------------------------------------------------
  [NKST SIMULATOR FRAMEWORK METRICS]
  -> Local Singularity Avoidance Spike (Max G): 8.0902e+08
@@ -77,6 +80,7 @@ The 'arty_window' module output currently shows (Be advised arty_window module s
  -> EHT Public Open Shadow Profile Limit:      0.1000
  -> Verification Status Against EHT Bounds:   [PASS]
 ======================================================================
+```
 
 ## 📂 Repository Structure
 
