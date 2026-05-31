@@ -64,6 +64,24 @@ REAL DUAL-STREAM PROFILE: EHT CORE OBSERVATIONAL (M87*)
 └── Inverse Complement Mirrors (76.4%): 3
 └── COMBINED GEOMETRIC RESONANCE FOOTPRINT: 6.8%
 
+The 'arty_window' module output currently shows (Be advised arty_window module still under review):
+
+======================================================================
+             NKST BOUNDARY STABILIZATION SEARCH REPORT                
+======================================================================
+[*] Core Objective: Search for Singularity-Prevention Signatures
+----------------------------------------------------------------------
+ [NKST SIMULATOR FRAMEWORK METRICS]
+ -> Local Singularity Avoidance Spike (Max G): 8.0902e+08
+ -> Post-Spike Energy Retention Ratio:        0.902048
+ -> Logarithmic Spatial Boundary Deviation:   0.046487
+----------------------------------------------------------------------
+ [REAL-WORLD OBSERVATIONAL CROSS-EXAMINATION]
+ -> LIGO Real Merger Peak Envelope Strain:    4.6086e-21
+ -> EHT Public Open Shadow Profile Limit:      0.1000
+ -> Verification Status Against EHT Bounds:   [PASS]
+======================================================================
+
 ---
 
 ## 📂 Repository Structure
