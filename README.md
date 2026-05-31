@@ -66,10 +66,6 @@ REAL DUAL-STREAM PROFILE: EHT CORE OBSERVATIONAL (M87*)
 
 The 'arty_window' module output currently shows (Be advised arty_window module still under review):
 
-======================================================================
-             NKST BOUNDARY STABILIZATION SEARCH REPORT                
-======================================================================
-[*] Core Objective: Search for Singularity-Prevention Signatures
 ----------------------------------------------------------------------
  [NKST SIMULATOR FRAMEWORK METRICS]
  -> Local Singularity Avoidance Spike (Max G): 8.0902e+08
@@ -81,8 +77,6 @@ The 'arty_window' module output currently shows (Be advised arty_window module s
  -> EHT Public Open Shadow Profile Limit:      0.1000
  -> Verification Status Against EHT Bounds:   [PASS]
 ======================================================================
-
----
 
 ## 📂 Repository Structure
 
